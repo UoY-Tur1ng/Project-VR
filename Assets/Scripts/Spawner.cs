@@ -25,28 +25,37 @@ public class Spawner : MonoBehaviour
     public Transform[] SpawnLocs;
     public GameObject[] Prefab;
     public GameObject[] Clone;
+    private int WaveSize;
 
     private void Start()
     {
+        WaveSize = 10;
         System.Random rand = new System.Random();
 
-        //while (NPCsAlive < Clone.Length)
-        for(int i = 0; i<Clone.Length;i++)
-        {
-            //int SpawnRand = rand.Next(0, 100000);
-            //if (SpawnRand < SpawnRate)
-            //{
-                Spawn(i, 0, SpawnLocs[rand.Next(0, 3)]);
-                //NPCsAlive += 1;
-            //}
-
-
-        }
+        float spawnTime = rand.Next(1, 4);
+        InvokeRepeating("Spawn", spawnTime+4, spawnTime);
     }
 
-    
-    void Spawn(int CloneIndex, int PrefabIndex, Transform Location)
+    private void OnEnable()
     {
-        Clone[CloneIndex] = Instantiate(Prefab[PrefabIndex], Location.transform.position, Quaternion.Euler(0, 0, 0)) as GameObject;
+        WaveSize = 10;
+        System.Random rand = new System.Random();
+
+        float spawnTime = rand.Next(1, 4);
+        InvokeRepeating("Spawn", spawnTime + 5, spawnTime);
+    }
+
+
+    void Spawn()
+    {
+        WaveSize--;
+        int spawnPointIndex = Random.Range(0, SpawnLocs.Length);
+        Transform Location = SpawnLocs[spawnPointIndex];
+        Clone[0] = Instantiate(Prefab[0], Location.transform.position, Quaternion.Euler(0, 0, 0)) as GameObject;
+        if (WaveSize == 0)
+        {
+            CancelInvoke("Spawn");
+            gameObject.SetActive(false);
+        }
     }
 }

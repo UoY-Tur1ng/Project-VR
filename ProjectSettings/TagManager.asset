@@ -6,6 +6,10 @@ TagManager:
   tags:
   - NPC
   - NPC Target
+  - Spawner
+  - GameOver
+  - HealthUI
+  - WaveUI
   layers:
   - Default
   - TransparentFX
