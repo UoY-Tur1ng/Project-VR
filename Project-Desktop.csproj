@@ -282,7 +282,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Modern People\Demo\Scripts\Presentation.cs" />
     <Compile Include="Assets\Scripts\BaseCollider.cs" />
     <Compile Include="Assets\Scripts\CameraControl.cs" />
     <Compile Include="Assets\Scripts\GunControl.cs" />

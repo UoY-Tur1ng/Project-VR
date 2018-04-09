@@ -26,6 +26,7 @@ public class Spawner : MonoBehaviour
     public GameObject[] Prefab;
     public GameObject[] Clone;
     private int WaveSize;
+    private int CloneNum;
 
     private void Start()
     {
@@ -33,6 +34,7 @@ public class Spawner : MonoBehaviour
         System.Random rand = new System.Random();
 
         float spawnTime = rand.Next(1, 4);
+        CloneNum = rand.Next(1,2);
         InvokeRepeating("Spawn", spawnTime+4, spawnTime);
     }
 
@@ -51,7 +53,7 @@ public class Spawner : MonoBehaviour
         WaveSize--;
         int spawnPointIndex = Random.Range(0, SpawnLocs.Length);
         Transform Location = SpawnLocs[spawnPointIndex];
-        Clone[0] = Instantiate(Prefab[0], Location.transform.position, Quaternion.Euler(0, 0, 0)) as GameObject;
+        Clone[0] = Instantiate(Prefab[CloneNum], Location.transform.position, Quaternion.Euler(0, 0, 0)) as GameObject;
         if (WaveSize == 0)
         {
             CancelInvoke("Spawn");

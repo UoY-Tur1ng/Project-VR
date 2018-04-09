@@ -62,7 +62,7 @@ public class GunControl : MonoBehaviour {
             Debug.Log(hit.transform.name);
             if (hit.transform.name == "NPC Body")
             {
-                Destroy(hit.transform.parent.gameObject);
+                Destroy(hit.transform.gameObject);
             }
         }
         RoundsInClip--;
