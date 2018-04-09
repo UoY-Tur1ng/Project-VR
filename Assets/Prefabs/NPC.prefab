@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 4353221030502406}
   - component: {fileID: 195849509074744460}
   - component: {fileID: 114046686478748856}
+  - component: {fileID: 95348180304130266}
   m_Layer: 0
   m_Name: NPC
   m_TagString: Untagged
@@ -114,6 +115,23 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1024496317629340}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!95 &95348180304130266
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1719744553925302}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114046686478748856
 MonoBehaviour:
   m_ObjectHideFlags: 1
