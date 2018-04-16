@@ -5,55 +5,40 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
 
-    //[System.Serializable]
-    //public class Wave
-    //{
-    //    public string name;
-    //    public int number;
-
-    //    public int Spawncount;
-    //    public float Spawnrate;
-    //}
-
-    //public Wave waves;
-    //public int nextWave = 0;
-    //public int numWaves;
-
-    //public int NPCsAlive = 0;
-    //public int SpawnRate = 10;
-
     public Transform[] SpawnLocs;
     public GameObject[] Prefab;
     public GameObject[] Clone;
-    private int WaveSize;
+    public int WaveSize;
     private int CloneNum;
 
     private void Start()
     {
-        WaveSize = 10;
-        System.Random rand = new System.Random();
-
-        float spawnTime = rand.Next(1, 4);
-        CloneNum = rand.Next(1,2);
-        InvokeRepeating("Spawn", spawnTime+4, spawnTime);
+        StartWave();
     }
 
     private void OnEnable()
     {
-        WaveSize = 10;
-        System.Random rand = new System.Random();
-
-        float spawnTime = rand.Next(1, 4);
-        InvokeRepeating("Spawn", spawnTime + 5, spawnTime);
+        StartWave();
     }
 
+    void StartWave()
+    {
+        WaveSize = 10;
+        System.Random rand = new System.Random((int)Time.time);
+        float spawnTime = rand.Next(1, 4);
+
+        InvokeRepeating("Spawn", spawnTime + 3, spawnTime);
+    }
 
     void Spawn()
     {
         WaveSize--;
         int spawnPointIndex = Random.Range(0, SpawnLocs.Length);
         Transform Location = SpawnLocs[spawnPointIndex];
+        System.Random rand = new System.Random();
+        CloneNum = rand.Next(1, 2);
         Clone[0] = Instantiate(Prefab[CloneNum], Location.transform.position, Quaternion.Euler(0, 0, 0)) as GameObject;
+        Clone[0].transform.parent = gameObject.transform;
         if (WaveSize == 0)
         {
             CancelInvoke("Spawn");

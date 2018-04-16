@@ -17,7 +17,6 @@ public class BaseCollider : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.tag);
         if (other.tag == "NPC")
         {
             Destroy(other.transform.gameObject);
