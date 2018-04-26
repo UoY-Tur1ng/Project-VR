@@ -23,7 +23,7 @@ public class Spawner : MonoBehaviour
 
     void StartWave()
     {
-        WaveSize = 10;
+        WaveSize = 1;
         System.Random rand = new System.Random((int)Time.time);
         float spawnTime = rand.Next(1, 4);
 
@@ -42,7 +42,30 @@ public class Spawner : MonoBehaviour
         if (WaveSize == 0)
         {
             CancelInvoke("Spawn");
+        }
+
+    }
+
+    void Update()
+    {
+        if (WaveSize == 0 && WaveDead() == true)
+        {
             gameObject.SetActive(false);
         }
     }
+
+    bool WaveDead()
+    {
+        if (this.transform.childCount == 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+        
+    }
 }
+
+

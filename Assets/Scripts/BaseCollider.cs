@@ -25,6 +25,7 @@ public class BaseCollider : MonoBehaviour {
             if (BaseHP <= 0) GameOver();
         }
     }
+
     // Update is called once per frame
     void Update () {
 		

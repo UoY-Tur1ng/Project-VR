@@ -10,6 +10,9 @@ public class GunControl : MonoBehaviour {
     private bool Reloading;
     private float ReloadComnplete;
     private float LastShot;
+    private AudioSource Source;
+    public AudioClip FireClip;
+    public AudioClip ReloadClip;
     public Text AmmoText;
 
     public Camera P1Cam;
@@ -17,6 +20,7 @@ public class GunControl : MonoBehaviour {
 
     private void Start()
     {
+        Source = GetComponent<AudioSource>();
         RoundsInClip = ClipSize;
         Reloading = false;
         SetAmmoText();
@@ -26,8 +30,7 @@ public class GunControl : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 	    
-        if (Input.GetButtonDown("Fire1"))
-        {
+
             if (RoundsInClip == 0 && Reloading == false)
             {
                 Reloading = true;
@@ -39,16 +42,17 @@ public class GunControl : MonoBehaviour {
                 if (Time.time > ReloadComnplete)
                 {
                     Reloading = false;
+                    Source.PlayOneShot(ReloadClip, 1);
                     RoundsInClip = ClipSize;
                     SetAmmoText();
                 }
             }
-            else if (Time.time > LastShot + 0.45f)
+            else if (Time.time > LastShot + 0.45f && Input.GetButtonDown("Fire1"))
             {
                 Shoot();
                 LastShot = Time.time;
             }
-        }
+
 
 
 	}
@@ -60,18 +64,21 @@ public class GunControl : MonoBehaviour {
         if (Physics.Raycast(P1Cam.transform.position, P1Cam.transform.forward, out hit, range))
         {
             Debug.Log(hit.transform.name);
-            if (hit.transform.name == "NPC Body")
+            if (hit.transform.tag == "NPC")
             {
                 Destroy(hit.transform.gameObject);
             }
         }
         RoundsInClip--;
+
+        Source.PlayOneShot(FireClip, Random.Range(0.7f,0.8f));
         SetAmmoText();
     }
 
     void Reload()
     {
         RoundsInClip = ClipSize;
+        
     }
 
     void SetAmmoText()

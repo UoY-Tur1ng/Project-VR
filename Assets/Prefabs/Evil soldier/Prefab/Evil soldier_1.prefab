@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 137257541207318896}
   m_Layer: 0
   m_Name: Body_LOD1
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -158,7 +158,7 @@ GameObject:
   - component: {fileID: 137156608591241628}
   m_Layer: 0
   m_Name: Eyes_LOD0
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -238,7 +238,7 @@ GameObject:
   - component: {fileID: 137225249414182584}
   m_Layer: 0
   m_Name: Body_LOD0
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -406,7 +406,7 @@ GameObject:
   - component: {fileID: 137234759206227430}
   m_Layer: 0
   m_Name: Body_LOD2
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -616,7 +616,7 @@ GameObject:
   - component: {fileID: 4682302075598118}
   m_Layer: 0
   m_Name: Skeleton
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -790,7 +790,7 @@ GameObject:
   - component: {fileID: 137243754384647826}
   m_Layer: 0
   m_Name: Eyes_LOD1
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -913,7 +913,7 @@ GameObject:
   - component: {fileID: 137795837543683224}
   m_Layer: 0
   m_Name: Eyes_LOD2
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2254,7 +2254,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 007be3779328eb8469539b652cc20627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
+  CoverChoice: {fileID: 0}
+  CoverReached: 0
+  SectorTag: 
 --- !u!136 &136127685577008002
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -2267,7 +2269,7 @@ CapsuleCollider:
   m_Radius: 0.2055178
   m_Height: 1.866871
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.8, z: 0}
 --- !u!137 &137156608591241628
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

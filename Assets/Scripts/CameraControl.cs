@@ -14,8 +14,8 @@ public class CameraControl : MonoBehaviour {
 
     public float minimumVert = -60.0f;
     public float maximumVert = 60.0f;
-    public float sensHorizontal = 10.0f;
-    public float sensVertical = 10.0f;
+    public float sensHorizontal = 4.0f;
+    public float sensVertical = 4.0f;
 
     public float _rotationX = 0;
 
