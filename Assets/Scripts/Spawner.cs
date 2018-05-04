@@ -23,7 +23,7 @@ public class Spawner : MonoBehaviour
 
     void StartWave()
     {
-        WaveSize = 1;
+        WaveSize = 10;
         System.Random rand = new System.Random((int)Time.time);
         float spawnTime = rand.Next(1, 4);
 

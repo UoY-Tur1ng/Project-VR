@@ -37,10 +37,11 @@ public class NPCController : MonoBehaviour {
         CoverChoice = CoverArray[rand.Next(1, 6)];
 
         //go to CoverChoice
-        GetComponent<NavMeshAgent>().destination = CoverChoice.transform.position;
+        //GetComponent<NavMeshAgent>().destination = CoverChoice.transform.position;
+        GetComponent<NavMeshAgent>().destination = (Target.transform.position - this.transform.position).normalized;
     }
 
-    private void OnTriggerEnter(Collider coll)
+    private void OnCollisionEnter(Collision coll)
     {
         Debug.Log("Cover Reached");
         if (coll.gameObject.tag == SectorTag)
@@ -56,6 +57,7 @@ public class NPCController : MonoBehaviour {
 
         }
 
+  
     }
     IEnumerator waitfor2()
     {

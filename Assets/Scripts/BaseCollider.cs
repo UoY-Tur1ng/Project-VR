@@ -38,6 +38,6 @@ public class BaseCollider : MonoBehaviour {
 
     void SetHPText()
     {
-        HPText.text = "Base HP: " + BaseHP.ToString();
+        HPText.text = "Health: " + BaseHP.ToString();
     }
 }

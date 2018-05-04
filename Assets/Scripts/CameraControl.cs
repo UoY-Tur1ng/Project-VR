@@ -14,14 +14,19 @@ public class CameraControl : MonoBehaviour {
 
     public float minimumVert = -60.0f;
     public float maximumVert = 60.0f;
-    public float sensHorizontal = 4.0f;
-    public float sensVertical = 4.0f;
+    public float sensHorizontal = 3.5f;
+    public float sensVertical = 3.5f;
 
     public float _rotationX = 0;
 
 
-	// Update is called once per frame
-	void Update () {
+    //private void Start()
+    //{
+    //    Cursor.lockState = CursorLockMode.Confined;
+    //}
+
+    // Update is called once per frame
+    void Update () {
 		if (axes == RotationAxis.MouseX)
         {
             transform.Rotate(0, Input.GetAxis("Mouse X") * sensHorizontal, 0);

@@ -35,6 +35,7 @@ public class GunControl : MonoBehaviour {
             {
                 Reloading = true;
                 AmmoText.text = "Ammo: Reloading";
+                Source.PlayOneShot(ReloadClip, 1);
                 ReloadComnplete = Time.time + 3f;
             }
             else if (Reloading == true)
@@ -42,7 +43,7 @@ public class GunControl : MonoBehaviour {
                 if (Time.time > ReloadComnplete)
                 {
                     Reloading = false;
-                    Source.PlayOneShot(ReloadClip, 1);
+                    
                     RoundsInClip = ClipSize;
                     SetAmmoText();
                 }
@@ -83,6 +84,6 @@ public class GunControl : MonoBehaviour {
 
     void SetAmmoText()
     {
-        AmmoText.text = "Ammo:   " + RoundsInClip.ToString();
+        AmmoText.text = "Ammo: " + RoundsInClip.ToString();
     }
 }
