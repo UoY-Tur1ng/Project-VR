@@ -7,13 +7,22 @@ public class WaveControl : MonoBehaviour {
 
     public GameObject[] targets;
     private int RoundNum = 0;
-    public Text WaveText;
-    public Text VictoryText;
+    public Text WaveText1;
+	public Text WaveText2;
+	public Text WaveText3;
+	public Text WaveText4;
+    public Text VictoryText1;
+	public Text VictoryText2;
+	public Text VictoryText3;
+	public Text VictoryText4;
 
     // Use this for initialization
     void Start () {
         SetWaveText();
-        VictoryText.text = "";
+        VictoryText1.text = "";
+		VictoryText2.text = "";
+		VictoryText3.text = "";
+		VictoryText4.text = "";
     }
 	
 	// Update is called once per frame
@@ -29,7 +38,10 @@ public class WaveControl : MonoBehaviour {
             }
             else
             {
-                VictoryText.text = "YOU SURVIVED!";
+                VictoryText1.text = "YOU SURVIVED!";
+				VictoryText2.text = "YOU SURVIVED!";
+				VictoryText3.text = "YOU SURVIVED!";
+				VictoryText4.text = "YOU SURVIVED!";
             }
         }
 	}
@@ -44,6 +56,9 @@ public class WaveControl : MonoBehaviour {
 
     void SetWaveText()
     {
-        WaveText.text = "Wave: " + RoundNum.ToString();
+        WaveText1.text = "Wave: " + RoundNum.ToString();
+		WaveText2.text = "Wave: " + RoundNum.ToString();
+		WaveText3.text = "Wave: " + RoundNum.ToString();
+		WaveText4.text = "Wave: " + RoundNum.ToString();
     }
 }

@@ -13,9 +13,18 @@ public class GunControl : MonoBehaviour {
     private AudioSource Source;
     public AudioClip FireClip;
     public AudioClip ReloadClip;
-    public Text AmmoText;
+    public Text AmmoText1;
+	public Text AmmoText2;
+	public Text AmmoText3;
+	public Text AmmoText4;
 
-    public Camera P1Cam;
+	
+	private SteamVR_TrackedObject trackedObj;
+	// 2
+	private SteamVR_Controller.Device Controller
+	{
+		get { return SteamVR_Controller.Input((int)trackedObj.index); }
+	}
 
 
     private void Start()
@@ -25,6 +34,11 @@ public class GunControl : MonoBehaviour {
         Reloading = false;
         SetAmmoText();
     }
+	
+	void Awake()
+	{
+		trackedObj = GetComponent<SteamVR_TrackedObject>();
+	}
 
 
     // Update is called once per frame
@@ -34,7 +48,10 @@ public class GunControl : MonoBehaviour {
             if (RoundsInClip == 0 && Reloading == false)
             {
                 Reloading = true;
-                AmmoText.text = "Ammo: Reloading";
+                AmmoText1.text = "Ammo: Reloading";
+				AmmoText2.text = "Ammo: Reloading";
+				AmmoText3.text = "Ammo: Reloading";
+				AmmoText4.text = "Ammo: Reloading";
                 Source.PlayOneShot(ReloadClip, 1);
                 ReloadComnplete = Time.time + 3f;
             }
@@ -48,7 +65,7 @@ public class GunControl : MonoBehaviour {
                     SetAmmoText();
                 }
             }
-            else if (Time.time > LastShot + 0.45f && Input.GetButtonDown("Fire1"))
+            else if (Time.time > LastShot + 0.45f && Controller.GetHairTriggerDown())
             {
                 Shoot();
                 LastShot = Time.time;
@@ -62,7 +79,7 @@ public class GunControl : MonoBehaviour {
     {
 
         RaycastHit hit;
-        if (Physics.Raycast(P1Cam.transform.position, P1Cam.transform.forward, out hit, range))
+		if (Physics.Raycast(gameObject.transform.position, gameObject.transform.forward, out hit, range))
         {
             Debug.Log(hit.transform.name);
             if (hit.transform.tag == "NPC")
@@ -84,6 +101,9 @@ public class GunControl : MonoBehaviour {
 
     void SetAmmoText()
     {
-        AmmoText.text = "Ammo: " + RoundsInClip.ToString();
+        AmmoText1.text = "Ammo: " + RoundsInClip.ToString();
+		AmmoText2.text = "Ammo: " + RoundsInClip.ToString();
+		AmmoText3.text = "Ammo: " + RoundsInClip.ToString();
+		AmmoText4.text = "Ammo: " + RoundsInClip.ToString();
     }
 }

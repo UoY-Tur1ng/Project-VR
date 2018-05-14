@@ -25,7 +25,7 @@ public class Spawner : MonoBehaviour
     {
         WaveSize = 10;
         System.Random rand = new System.Random((int)Time.time);
-        float spawnTime = rand.Next(1, 4);
+        float spawnTime = rand.Next(4, 5);
 
         InvokeRepeating("Spawn", spawnTime + 3, spawnTime);
     }
